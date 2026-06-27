@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMORY CARD GAME</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🧠 MEMORY CARD GAME 🧠</h1>
+
+    <!-- Player Details -->
+
+    <div class="players">
+
+        <h2>Enter Player Names</h2>
+
+        <input type="text" id="p1" placeholder="Player 1 Name">
+
+        <input type="text" id="p2" placeholder="Player 2 Name">
+
+        <input type="text" id="p3" placeholder="Player 3 Name">
+
+        <input type="text" id="p4" placeholder="Player 4 Name">
+
+        <input type="text" id="p5" placeholder="Player 5 Name">
+
+        <button onclick="savePlayers()">
+            Start Tournament
+        </button>
+
+    </div>
+
+    <h2 id="currentPlayer"></h2>
+
+    <!-- Timer & Moves -->
+
+    <div class="info">
+
+        <div class="box">
+            ⏱ Time
+            <h2 id="timer">0</h2>
+        </div>
+
+        <div class="box">
+            🎯 Moves
+            <h2 id="moves">0</h2>
+        </div>
+
+        <button onclick="restartGame()">
+            🔄 Restart
+        </button>
+
+    </div>
+
+    <!-- Memory Board -->
+
+    <div id="game"></div>
+
+    <!-- Result Popup -->
+
+    <div id="popup" class="popup">
+
+        <div class="popup-box">
+
+            <h2>🏆 Tournament Result</h2>
+
+            <div id="result"></div>
+
+            <br>
+
+            <button onclick="location.reload()">
+                Play Again
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Team Members -->
+
+    <footer class="team-footer">
+
+        <h2>👥 TEAM MEMBERS</h2>
+
+        <div class="team-list">
+
+            <div class="team-member">
+                👤<br>
+                <strong>Varun Kuma gupta</strong><br>
+                <small>Team Leader</small>
+            </div>
+
+            <div class="team-member">
+                👤<br>
+                <strong>Abhishek</strong><br>
+                <small>Frontend Developer</small>
+            </div>
+
+            <div class="team-member">
+                👤<br>
+                <strong>Vishnupriya Mehta</strong><br>
+                <small>Backend Developer</small>
+            </div>
+
+            <div class="team-member">
+                👤<br>
+                <strong>Rani Patel</strong><br>
+                <small>Tester</small>
+            </div>
+             <div class="team-member">
+                👤<br>
+                <strong>Saniye sharma</strong> Sa</strong><br>
+                <small>Tester</small>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
