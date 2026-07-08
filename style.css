@@ -20,42 +20,6 @@ h1{
     text-shadow:2px 2px 8px black;
 }
 
-/* ---------- Player Form ---------- */
-
-.players{
-    width:500px;
-    margin:20px auto;
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
-
-.players h2{
-    margin-bottom:15px;
-    color:#1e3a8a;
-}
-
-.players input{
-    width:90%;
-    padding:12px;
-    margin:8px;
-    border-radius:8px;
-    border:1px solid #ccc;
-    font-size:16px;
-}
-
-.players button{
-    margin-top:15px;
-}
-
-/* ---------- Current Player ---------- */
-
-#currentPlayer{
-    color:white;
-    margin:20px;
-}
-
 /* ---------- Timer & Moves ---------- */
 
 .info{
@@ -213,10 +177,6 @@ button:hover{
 /* ---------- Responsive ---------- */
 
 @media(max-width:700px){
-
-.players{
-    width:95%;
-}
 
 #game{
     width:320px;
