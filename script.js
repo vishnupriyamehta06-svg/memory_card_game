@@ -1,6 +1,5 @@
 // ================================
-// MEMORY CARD GAME - TOURNAMENT
-// PART 1
+// MEMORY CARD GAME
 // ================================
 
 // 16 Cards (8 Pairs)
@@ -21,7 +20,6 @@ const timerText = document.getElementById("timer");
 const movesText = document.getElementById("moves");
 const popup = document.getElementById("popup");
 const result = document.getElementById("result");
-const currentPlayerText = document.getElementById("currentPlayer");
 
 // Game Variables
 let firstCard = null;
@@ -32,55 +30,6 @@ let timer = null;
 let seconds = 0;
 let moves = 0;
 let gameStarted = false;
-
-// Tournament Variables
-let players = [];
-let scores = [];
-let currentPlayer = 0;
-
-// ================================
-// SAVE PLAYER NAMES
-// ================================
-
-function savePlayers(){
-
-    players = [];
-
-    if(document.getElementById("p1").value.trim()!="")
-        players.push(document.getElementById("p1").value.trim());
-
-    if(document.getElementById("p2").value.trim()!="")
-        players.push(document.getElementById("p2").value.trim());
-
-    if(document.getElementById("p3").value.trim()!="")
-        players.push(document.getElementById("p3").value.trim());
-
-    if(document.getElementById("p4").value.trim()!="")
-        players.push(document.getElementById("p4").value.trim());
-
-    if(document.getElementById("p5").value.trim()!="")
-        players.push(document.getElementById("p5").value.trim());
-
-    if(players.length==0){
-
-        alert("Please enter at least one player.");
-
-        return;
-
-    }
-
-    scores = new Array(players.length).fill(0);
-
-    currentPlayer = 0;
-
-    document.querySelector(".players").style.display="none";
-
-    currentPlayerText.innerHTML =
-        "🎮 Current Player : <b>"+players[currentPlayer]+"</b>";
-
-    restartGame();
-
-}
 
 // ================================
 // SHUFFLE
@@ -130,6 +79,7 @@ function createBoard(){
     });
 
 }
+
 // ================================
 // FLIP CARD
 // ================================
@@ -184,7 +134,7 @@ function checkMatch(){
 
         resetSelection();
 
-        checkWinner();
+        finishCurrentPlayer();
 
     }
 
@@ -226,6 +176,8 @@ function resetSelection(){
 
 function startTimer(){
 
+    clearInterval(timer);
+
     timer=setInterval(function(){
 
         seconds++;
@@ -265,108 +217,59 @@ function restartGame(){
     createBoard();
 
 }
+
 // ================================
-// FINISH CURRENT PLAYER
+// CHECK GAME FINISH & STOP TIMER
 // ================================
 
 function finishCurrentPlayer(){
 
     let matched=document.querySelectorAll(".matched");
 
-    if(matched.length===16){
+    if(matched.length===animals.length){
 
         clearInterval(timer);
 
-        // Calculate Score
-        let score=100-(moves*2)-seconds;
-
-        if(score<0){
-
-            score=0;
-
-        }
-
-        scores[currentPlayer]=score;
-
-        // Next Player
-
-        currentPlayer++;
-
-        if(currentPlayer<players.length){
-
-            alert(
-                players[currentPlayer-1]+
-                " finished!\n\n"+
-                "Next Player : "+
-                players[currentPlayer]
-            );
-
-            currentPlayerText.innerHTML=
-            "🎮 Current Player : <b>"+
-            players[currentPlayer]+
-            "</b>";
-
-            restartGame();
-
-        }
-
-        else{
-
-            showResult();
-
-        }
+        showResult();
 
     }
 
 }
 
 // ================================
-// SHOW LEADERBOARD
+// SHOW RESULT
 // ================================
 
 function showResult(){
 
-    let ranking=[];
+    let score=100-(moves*2)-seconds;
 
-    for(let i=0;i<players.length;i++){
+    if(score<0){
 
-        ranking.push({
-
-            name:players[i],
-
-            score:scores[i]
-
-        });
+        score=0;
 
     }
 
-    ranking.sort(function(a,b){
+    let html="<h2>🎉 Well Played!</h2><br>";
 
-        return b.score-a.score;
+    html+="⏱ Time Taken : <b>"+seconds+"s</b><br><br>";
 
-    });
+    html+="🎯 Moves : <b>"+moves+"</b><br><br>";
 
-    let html="<h2>🏆 FINAL RESULT</h2><br>";
-
-    const medals=["🥇","🥈","🥉","4️⃣","5️⃣"];
-
-    for(let i=0;i<ranking.length;i++){
-
-        html+=
-        medals[i]+" <b>"+
-        ranking[i].name+
-        "</b> : "+
-        ranking[i].score+
-        "<br><br>";
-
-    }
-
-    html+="<hr><br>";
-
-    html+="🎉 <b>Winner : "+ranking[0].name+"</b>";
+    html+="⭐ Score : <b>"+score+"</b>";
 
     result.innerHTML=html;
 
     popup.style.display="flex";
 
 }
+
+// ================================
+// START GAME DIRECTLY (no name form)
+// ================================
+
+window.onload=function(){
+
+    restartGame();
+
+};
