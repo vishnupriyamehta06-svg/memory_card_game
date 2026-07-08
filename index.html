@@ -12,30 +12,6 @@
 
     <h1>🧠 MEMORY CARD GAME 🧠</h1>
 
-    <!-- Player Details -->
-
-    <div class="players">
-
-        <h2>Enter Player Names</h2>
-
-        <input type="text" id="p1" placeholder="Player 1 Name">
-
-        <input type="text" id="p2" placeholder="Player 2 Name">
-
-        <input type="text" id="p3" placeholder="Player 3 Name">
-
-        <input type="text" id="p4" placeholder="Player 4 Name">
-
-        <input type="text" id="p5" placeholder="Player 5 Name">
-
-        <button onclick="savePlayers()">
-            Start Tournament
-        </button>
-
-    </div>
-
-    <h2 id="currentPlayer"></h2>
-
     <!-- Timer & Moves -->
 
     <div class="info">
@@ -66,13 +42,13 @@
 
         <div class="popup-box">
 
-            <h2>🏆 Tournament Result</h2>
+            <h2>🏆 Game Result</h2>
 
             <div id="result"></div>
 
             <br>
 
-            <button onclick="location.reload()">
+            <button onclick="restartGame()">
                 Play Again
             </button>
 
@@ -90,7 +66,7 @@
 
             <div class="team-member">
                 👤<br>
-                <strong>Varun Kuma gupta</strong><br>
+                <strong>Varun Kumar Gupta</strong><br>
                 <small>Team Leader</small>
             </div>
 
@@ -111,9 +87,10 @@
                 <strong>Rani Patel</strong><br>
                 <small>Tester</small>
             </div>
-             <div class="team-member">
+
+            <div class="team-member">
                 👤<br>
-                <strong>Saniye sharma</strong> Sa</strong><br>
+                <strong>Saniya Sharma</strong><br>
                 <small>Tester</small>
             </div>
 
